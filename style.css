@@ -1,0 +1,1357 @@
+/* ========================================== */
+/* CSS VARIABLES                              */
+/* ========================================== */
+:root {
+    --primary-color: #ffa600;
+    --primary-dark: #e09200;
+    --primary-light: #fff3d6;
+    --secondary-color: #fff8eb;
+    --background-color: #fafaf7;
+    --text-color: #2d2a26;
+    --light-gray: #e0ddd8;
+    --accent-orange: #ff6b35;
+    --accent-green: #4caf50;
+    --accent-blue: #2196f3;
+    --accent-purple: #7c4dff;
+
+    /* Dark Mode Colors */
+    --dark-primary-color: #cc8500;
+    --dark-secondary-color: #3d2e00;
+    --dark-background-color: #1a1816;
+    --dark-text-color: #ede8e0;
+    --dark-light-gray: #3a3730;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1rem;
+}
+
+/* ========== HEADER ========== */
+header {
+    background: linear-gradient(135deg, #ffa600 0%, #e09200 100%);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 0 3px 12px rgba(255, 166, 0, 0.3);
+}
+
+header h1 {
+    font-size: 1.6em;
+    margin: 0;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+header h1 .book-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2em;
+}
+
+.header-widgets {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+}
+
+/* Session Badge */
+.session-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background-color: rgba(0,0,0,0.15);
+    padding: 0.5rem 1.25rem;
+    border-radius: 12px;
+}
+
+.phase-label {
+    font-size: 0.8em;
+    font-weight: 500;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.session-label {
+    font-size: 0.95em;
+    font-weight: 700;
+}
+
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.75rem 1rem;
+    border-radius: 15px;
+    background-color: rgba(0,0,0, 0.2);
+    width: fit-content;
+}
+
+.timer-container button {
+    background-color: white;
+    color: var(--primary-dark);
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: 600;
+}
+
+.timer-container button:hover {
+    background-color: var(--primary-light);
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle i {
+    margin: 0 0.5rem;
+    color: white;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.4);
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-dark);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* ========== MAIN LAYOUT ========== */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 6rem);
+}
+
+/* ========== ASIDE (Activity List) ========== */
+aside.activity-list {
+    width: 100%;
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-bottom: 1px solid var(--light-gray);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+aside.activity-list h2 {
+    font-size: 1.25em;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+aside.activity-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+aside.activity-list li {
+    margin-bottom: 0;
+}
+
+aside.activity-list a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    width: auto;
+    padding: 0.5rem 1.2rem;
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+aside.activity-list a[href="#activity-0"] {
+    font-size: 1.3em;
+    padding: 0.6rem 1rem;
+}
+
+aside.activity-list a:hover {
+    background-color: rgba(255, 166, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+aside.activity-list a.active,
+aside.activity-list a.active:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 166, 0, 0.35);
+}
+
+/* ========== RECETA TRACKER (sidebar) ========== */
+.receta-tracker {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--light-gray);
+}
+
+.receta-tracker h3 {
+    font-size: 1em;
+    margin: 0 0 0.75rem 0;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.receta-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.receta-step {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75em;
+    background-color: rgba(0,0,0,0.06);
+    opacity: 0.5;
+    transition: all 0.2s ease;
+}
+
+.receta-step.active-step {
+    background-color: var(--primary-color);
+    color: white;
+    opacity: 1;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(255, 166, 0, 0.3);
+}
+
+.receta-step.completed-step {
+    background-color: var(--accent-green);
+    color: white;
+    opacity: 0.8;
+}
+
+.receta-icon {
+    font-size: 1.1em;
+}
+
+.receta-label {
+    white-space: nowrap;
+}
+
+/* ========== MAIN CONTENT ========== */
+main.content {
+    flex: 1;
+    padding: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-y: auto;
+}
+
+.progress-bar {
+    background-color: var(--light-gray);
+    height: 0.7rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    background: linear-gradient(90deg, #ffa600, #ffb833);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 5px;
+}
+
+/* ========== ACTIVITY CARDS ========== */
+.activity-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    transition: opacity 0.333s ease;
+    opacity: 0;
+    position: absolute;
+    width: calc(100% - 2rem);
+    border-top: 3px solid var(--primary-color);
+}
+
+.activity-card.active {
+    display: block;
+    opacity: 1;
+    position: relative;
+}
+
+.activity-card > h2 {
+    display: flex;
+    align-items: center;
+    font-size: 1.6em;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+.activity-card > h2 .book-icon {
+    margin-right: 0.5rem;
+    font-size: 1em;
+}
+
+.overview-subtitle {
+    font-size: 1em;
+    color: #888;
+    margin-top: -0.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-style: italic;
+}
+
+/* ========== ACTIVITY HEADER (con timer) ========== */
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.activity-header h2 {
+    margin: 0;
+    flex: 1;
+    min-width: 250px;
+    color: var(--primary-dark);
+    font-size: 1.4em;
+}
+
+.activity-timer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--secondary-color);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 166, 0, 0.2);
+}
+
+.activity-duration {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.timer-start-btn {
+    background-color: var(--accent-green);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.timer-start-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.timer-start-btn.running {
+    background-color: var(--accent-orange);
+}
+
+.timer-start-btn.running:hover {
+    background-color: #e55a2b;
+}
+
+/* ========== COMMAND SECTIONS (De un Vistazo) ========== */
+.command-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #fefdfb;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.command-section h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.objective-box {
+    background-color: white;
+    padding: 1.25rem;
+    border-radius: 6px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(255, 166, 0, 0.1);
+}
+
+.objective-box p {
+    margin: 0;
+    font-size: 1.05em;
+    line-height: 1.7;
+}
+
+.objective-box strong {
+    color: var(--primary-dark);
+}
+
+/* ========== TACTICA BOX ========== */
+.tactica-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    background-color: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+}
+
+.tactica-icon {
+    font-size: 2.5em;
+    flex-shrink: 0;
+}
+
+.tactica-info h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-dark);
+    font-size: 1.15em;
+}
+
+.tactica-info p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ========== ENTREGABLE BOX ========== */
+.entregable-box {
+    background-color: white;
+    padding: 1.25rem;
+    border-radius: 6px;
+    border: 2px dashed var(--accent-green);
+}
+
+.entregable-box p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+/* ========== ESSENTIALS GRID ========== */
+.essentials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.essential-card {
+    background-color: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 2px solid var(--secondary-color);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.essential-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(255, 166, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.essential-icon {
+    font-size: 2.5em;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.essential-card h4 {
+    margin: 0.5rem 0;
+    color: var(--primary-dark);
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.essential-card p {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .essentials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== MATERIALS CHECKLIST ========== */
+.materials-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.materials-checklist label {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.materials-checklist label:hover {
+    background-color: var(--primary-light);
+}
+
+.materials-checklist input[type="checkbox"] {
+    margin-right: 0.75rem;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.care-reminder {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: #fff3e0;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent-orange);
+    font-size: 0.95em;
+}
+
+/* ========== TIMELINE ========== */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--primary-dark));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -1.75rem;
+    top: 0.25rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(255, 166, 0, 0.3);
+}
+
+.timeline-content {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-content strong {
+    display: block;
+    color: var(--primary-dark);
+    font-size: 1.05em;
+    margin-bottom: 0.3rem;
+}
+
+.timeline-content p {
+    margin: 0.5rem 0 0 0;
+    color: #666;
+    font-size: 0.95em;
+}
+
+.time-badge {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+/* ========== TROUBLESHOOTING ========== */
+.troubleshooting-list ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.troubleshooting-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+/* ========== REGISTRO DOCENTE ========== */
+.registro-docente {
+    border-left-color: var(--accent-purple);
+}
+
+.registro-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.registro-checklist label {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+
+.registro-checklist input[type="checkbox"] {
+    margin-right: 0.75rem;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--accent-purple);
+}
+
+/* ========== ROLES SECTION ========== */
+.roles-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.role-card {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid;
+}
+
+.role-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.1em;
+}
+
+.role-card ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.role-card li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.role-teacher {
+    background-color: #fff3e0;
+    border-color: var(--primary-color);
+}
+
+.role-teacher h4 {
+    color: var(--primary-dark);
+}
+
+.role-student {
+    background-color: #f1f8e9;
+    border-color: var(--accent-green);
+}
+
+.role-student h4 {
+    color: var(--accent-green);
+}
+
+/* ========== SLIDE REFERENCE ========== */
+.slide-reference {
+    background-color: #fefdfb;
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 2px dashed var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.slide-reference h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+}
+
+.slide-content {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.slide-content p, .slide-content ol {
+    margin: 0.75rem 0;
+}
+
+.slide-content ul {
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+}
+
+.slide-content li {
+    margin-bottom: 0.5rem;
+}
+
+.highlight-text {
+    background-color: var(--primary-light);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--primary-color);
+    font-weight: 600;
+}
+
+/* ========== RECETA VISUAL (inside slides) ========== */
+.receta-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.receta-paso {
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    border: 2px solid #e0e0e0;
+    font-size: 0.9em;
+    line-height: 1.5;
+    opacity: 0.6;
+}
+
+.receta-paso span {
+    font-size: 1.5em;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.receta-paso.receta-activo {
+    background-color: var(--primary-light);
+    border-color: var(--primary-color);
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(255, 166, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+    .receta-visual {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== TEAM ROLES GRID ========== */
+.team-roles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.team-role-card {
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    border-left: 3px solid var(--primary-color);
+    text-align: center;
+}
+
+.team-role-icon {
+    font-size: 1.8em;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.team-role-card h5 {
+    margin: 0.25rem 0;
+    color: var(--primary-dark);
+    font-size: 0.95em;
+}
+
+.team-role-card p {
+    margin: 0;
+    font-size: 0.85em;
+    color: #666;
+    line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+    .team-roles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== CÓDIGO DE HONOR ========== */
+.codigo-honor {
+    background-color: #fefdfb;
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.codigo-honor h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    font-size: 1.15em;
+}
+
+.honor-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.honor-item {
+    padding: 0.6rem 0.75rem;
+    background-color: white;
+    border-radius: 6px;
+    font-size: 0.95em;
+    border-left: 3px solid var(--primary-color);
+}
+
+/* ========== PREGUNTA MÁGICA ========== */
+.pregunta-magica {
+    background-color: var(--primary-light);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.pregunta-label {
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1em;
+}
+
+.pregunta-texto {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--text-color);
+    font-style: italic;
+    margin: 0.5rem 0 0 0 !important;
+}
+
+/* ========== CASO ANÁLISIS ========== */
+.caso-analisis {
+    background-color: #fff3e0;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.caso-analisis h5 {
+    margin: 0 0 0.75rem 0;
+    color: var(--primary-dark);
+}
+
+.caso-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 166, 0, 0.2);
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.caso-item:last-child {
+    border-bottom: none;
+}
+
+/* ========== TEAM ACTION BOX ========== */
+.team-action-box {
+    background-color: #e8f5e9;
+    border: 2px solid var(--accent-green);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.team-action-box h4 {
+    margin: 0 0 0.75rem 0;
+    color: var(--accent-green);
+}
+
+.team-action-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.team-action-item {
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    border-radius: 6px;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+    .team-action-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== EXPEDIENTE PREGUNTAS ========== */
+.expediente-preguntas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.expediente-preguntas p {
+    margin: 0 !important;
+    padding: 0.75rem;
+    background-color: var(--primary-light);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+@media (max-width: 600px) {
+    .expediente-preguntas {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== ENTREGABLES CIERRE ========== */
+.entregables-cierre {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background-color: #fefdfb;
+    border-radius: 8px;
+    border: 2px solid var(--accent-green);
+}
+
+.entregables-cierre h4 {
+    margin: 0 0 1rem 0;
+    color: var(--accent-green);
+}
+
+.entregables-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.entregable-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.entregable-num {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--accent-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.entregable-item strong {
+    display: block;
+    color: var(--text-color);
+    margin-bottom: 0.2rem;
+}
+
+.entregable-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* ========== CONTINUIDAD BOX ========== */
+.continuidad-box {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    border: 2px solid var(--accent-blue);
+}
+
+.continuidad-box h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--accent-blue);
+}
+
+.continuidad-box p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ========== OPTIONAL SCRIPT (Collapsible) ========== */
+.optional-script {
+    margin-top: 1.5rem;
+}
+
+.collapsible-button {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    border: none;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.collapsible-button:hover {
+    background-color: #d0cdc8;
+}
+
+.collapsible-content {
+    display: none;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    background-color: #fefdfb;
+    border-radius: 6px;
+    border: 1px solid var(--light-gray);
+}
+
+.collapsible-content.active {
+    display: block;
+}
+
+.dialogue {
+    padding: 1rem;
+    border-radius: 6px;
+    line-height: 1.7;
+}
+
+.dialogue.assistant {
+    background-color: var(--primary-light);
+    border-left: 4px solid var(--primary-color);
+}
+
+/* ========== DARK MODE ========== */
+body.dark-mode {
+    background-color: var(--dark-background-color);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode header {
+    background: linear-gradient(135deg, #cc8500, #a66d00);
+}
+
+body.dark-mode .activity-card {
+    background-color: var(--dark-light-gray);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border-top-color: var(--dark-primary-color);
+}
+
+body.dark-mode .activity-card > h2,
+body.dark-mode .activity-header h2 {
+    color: #ffb833;
+}
+
+body.dark-mode .progress-bar {
+    background-color: var(--dark-light-gray);
+}
+
+body.dark-mode aside.activity-list {
+    background-color: var(--dark-secondary-color);
+    border-color: var(--dark-light-gray);
+}
+
+body.dark-mode aside.activity-list h2,
+body.dark-mode .receta-tracker h3 {
+    color: var(--dark-text-color);
+}
+
+body.dark-mode aside.activity-list a {
+    color: var(--dark-text-color);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode aside.activity-list a:hover {
+    background-color: rgba(255, 166, 0, 0.2);
+}
+
+body.dark-mode aside.activity-list a.active,
+body.dark-mode aside.activity-list a.active:hover {
+    background-color: var(--primary-color);
+    color: #1a1816;
+}
+
+body.dark-mode .receta-step {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .command-section,
+body.dark-mode .slide-reference {
+    background-color: #2a2720;
+}
+
+body.dark-mode .role-teacher { background-color: #3d2e00; }
+body.dark-mode .role-student { background-color: #2e4b26; }
+
+body.dark-mode .objective-box,
+body.dark-mode .tactica-box,
+body.dark-mode .essential-card,
+body.dark-mode .timeline-content,
+body.dark-mode .slide-content,
+body.dark-mode .honor-item,
+body.dark-mode .team-role-card,
+body.dark-mode .entregable-item,
+body.dark-mode .team-action-item,
+body.dark-mode .materials-checklist label,
+body.dark-mode .registro-checklist label {
+    background-color: #33302a;
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .highlight-text {
+    background-color: rgba(255, 166, 0, 0.15);
+    border-left-color: var(--primary-color);
+}
+
+body.dark-mode .pregunta-magica {
+    background-color: rgba(255, 166, 0, 0.1);
+}
+
+body.dark-mode .caso-analisis {
+    background-color: rgba(255, 166, 0, 0.08);
+}
+
+body.dark-mode .collapsible-button {
+    background-color: var(--dark-light-gray);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .collapsible-content {
+    background-color: #2a2720;
+    border-color: var(--dark-light-gray);
+}
+
+body.dark-mode .dialogue.assistant {
+    background-color: rgba(255, 166, 0, 0.08);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .entregable-box {
+    background-color: #33302a;
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .codigo-honor {
+    background-color: #2a2720;
+}
+
+body.dark-mode .entregables-cierre {
+    background-color: #2a2720;
+}
+
+body.dark-mode .continuidad-box {
+    background-color: #1a2a3d;
+}
+
+body.dark-mode .team-action-box {
+    background-color: #1a3020;
+}
+
+body.dark-mode .session-badge {
+    background-color: rgba(0,0,0,0.25);
+}
+
+body.dark-mode .receta-paso {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .receta-paso.receta-activo {
+    background-color: rgba(255, 166, 0, 0.2);
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .expediente-preguntas p {
+    background-color: rgba(255, 166, 0, 0.1);
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        justify-content: flex-start;
+        width: auto;
+        font-size: 1.5em;
+    }
+
+    .header-widgets {
+        flex-direction: row;
+        width: auto;
+        justify-content: flex-end;
+    }
+
+    .main-container {
+        flex-direction: row;
+    }
+
+    aside.activity-list {
+        width: 220px;
+        border-right: 1px solid var(--light-gray);
+        border-bottom: none;
+        padding: 1rem;
+    }
+
+    aside.activity-list h2 {
+        text-align: left;
+    }
+
+    aside.activity-list ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    aside.activity-list li {
+        margin-bottom: 0.75rem;
+    }
+
+    .activity-header {
+        flex-wrap: nowrap;
+    }
+
+    .receta-steps {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 767px) {
+    .activity-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .activity-timer {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
